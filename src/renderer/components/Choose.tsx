@@ -17,7 +17,7 @@ const Choose: React.FC = () => {
   return (
     <div className="max-w-full pr-32 mt-14 bg-white">
       <h1 className="text-3xl font-bold mb-6 text-left font-sans">
-        🔐 Choose Encryption Method
+        ✅ Choose Encryption Method
       </h1>
       <div className="flex justify-center space-x-8 rounded-md items-center">
         <div

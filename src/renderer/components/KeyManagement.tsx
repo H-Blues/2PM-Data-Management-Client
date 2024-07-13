@@ -201,7 +201,7 @@ const KeyManagement: React.FC = () => {
         >
           Clear
         </button>
-        <button
+        {/* <button
           className={`px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none font-cursive ${
             !imported && 'opacity-50 cursor-not-allowed'
           }`}
@@ -209,7 +209,7 @@ const KeyManagement: React.FC = () => {
           disabled={!imported}
         >
           Export
-        </button>
+        </button> */}
       </div>
     </div>
   );

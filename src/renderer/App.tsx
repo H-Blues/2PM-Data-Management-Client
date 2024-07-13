@@ -150,11 +150,11 @@ function AppContent() {
       <Route
         path="*"
         element={
-          <div className="relative grid grid-cols-10 h-screen">
+          <div className="relative grid grid-cols-12 h-screen">
             <div className="col-span-4">
               <Sidebar />
             </div>
-            <div className="col-span-6">
+            <div className="col-span-8">
               <MainContent />
             </div>
           </div>
