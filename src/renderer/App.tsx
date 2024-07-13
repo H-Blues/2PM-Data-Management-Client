@@ -9,7 +9,8 @@ import {
 
 import logo2pm from '../../.erb/img/2pm.jpg';
 import logoZama from '../../.erb/img/zama.jpg';
-import logo0g from '../../.erb/img/0g.jpg';
+import logofil from '../../.erb/img/filecoin.png';
+// import logo0g from '../../.erb/img/0g.jpg';
 
 import Home from './components/Home';
 import KeyManagement from './components/KeyManagement';
@@ -21,7 +22,19 @@ import OneClickOperation from './components/OneClickOperation';
 
 import './App.css';
 
-const sidebarSections = [
+interface SidebarItem {
+  path: string;
+  label: string;
+  emoji?: string;
+  logo?: string;
+}
+
+interface SidebarSection {
+  title: string;
+  items: SidebarItem[];
+}
+
+const sidebarSections: SidebarSection[] = [
   {
     title: 'Account',
     items: [{ path: '/key-management', emoji: '🔑', label: 'Key Management' }],
@@ -57,7 +70,7 @@ const sidebarSections = [
     items: [
       { path: '/2pm-network', logo: logo2pm, label: '2PM.Network' },
       { path: '/zama', logo: logoZama, label: 'ZAMA' },
-      { path: '/0g', logo: logo0g, label: '0G' },
+      { path: '/0g', logo: logofil, label: '0G' },
     ],
   },
 ];
