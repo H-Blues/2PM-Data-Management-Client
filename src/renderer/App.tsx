@@ -51,7 +51,7 @@ const sidebarSections: SidebarSection[] = [
       {
         path: '/local-encryption',
         emoji: '🔐',
-        label: 'Step1: Local Encryption',
+        label: 'Step1: Local FHE Encryption',
       },
       {
         path: '/upload-encrypted-data',
@@ -60,7 +60,7 @@ const sidebarSections: SidebarSection[] = [
       },
       {
         path: '/one-click-operation',
-        emoji: '🛠️',
+        emoji: '🛜',
         label: 'One Click Operation',
       },
     ],
@@ -70,14 +70,14 @@ const sidebarSections: SidebarSection[] = [
     items: [
       { path: '/2pm-network', logo: logo2pm, label: '2PM.Network' },
       { path: '/zama', logo: logoZama, label: 'ZAMA' },
-      { path: '/0g', logo: logofil, label: '0G' },
+      { path: '/filecoin', logo: logofil, label: 'Filecoin' },
     ],
   },
 ];
 
 function Sidebar() {
   return (
-    <nav className="w-64 bg-gray-100 p-4 flex flex-col border-r border-gray-300 h-screen">
+    <nav className="w-72 bg-gray-100 p-4 flex flex-col border-r border-gray-300 h-screen">
       {sidebarSections.map((section, index) => (
         <div key={index}>
           <div className="font-sans font-bold text-xl mb-4 text-gray-600">
@@ -151,10 +151,10 @@ function AppContent() {
         path="*"
         element={
           <div className="relative grid grid-cols-10 h-screen">
-            <div className="col-span-3">
+            <div className="col-span-4">
               <Sidebar />
             </div>
-            <div className="col-span-7">
+            <div className="col-span-6">
               <MainContent />
             </div>
           </div>
