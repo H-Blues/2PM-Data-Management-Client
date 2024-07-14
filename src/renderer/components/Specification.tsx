@@ -13,7 +13,7 @@ const Specification: React.FC = () => {
         computing power contributors. It's like a superhero team for AI! 🦸‍♀️🦸‍♂️
       </p>
       <p className="mb-4">
-        🤝 2PM.Network collaborates with the 0G AI data layer, utilizing
+        🤝 2PM.Network collaborates with the IPFS AI data layer, utilizing
         client-side and data management contract suites to enable users to
         conveniently verify, encrypt, and upload their own data. It's a match
         made in data heaven! 😇
@@ -23,7 +23,7 @@ const Specification: React.FC = () => {
         functionality. In addition to providing users with the most secure local
         encryption method (because we take security seriously! 🕵️‍♂️), it also
         establishes a trusted data server, allowing users to complete data
-        encryption and upload to 0G with a single click. It's like magic, but
+        encryption and upload to IPFS with a single click. It's like magic, but
         better! 🪄✨
       </p>
     </div>
