@@ -2,11 +2,11 @@
 
 ## Background
 
-![2PM Network Banner](https://twitter.com/2PM_Network/header_photo)
+![2PM Network Banner](https://docs.2pm.network/~gitbook/image?url=https%3A%2F%2F2864598578-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FRhLjNEGO5hiT1vh0ATk6%252Fuploads%252FCaShAnxIMCVTjN6iZ4xb%252F1500x500%2520CO.jpeg%3Falt%3Dmedia%26token%3D8eefff4a-c259-4e6f-9fac-7c98b096218b&width=1248&dpr=2&quality=100&sign=ac9be72b&sv=1)
 
 2PM.Network is a public application network for privacy-computing AI models based on Ethereum security. The name "2PM" represents its three core features: Public, Privacy, and Models.
 
-For more information, visit our official website: [https://app.2pm.network/home](https://app.2pm.network/home)
+For more information, visit our official website: [https://app.2pm.network/home](https://app.2pm.network/home).
 
 ## Introduction
 
