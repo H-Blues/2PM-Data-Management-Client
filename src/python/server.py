@@ -1,14 +1,14 @@
 # server.py
 import sys
-# from fhe import fhe_encrypt
+from fhe import fhe_encrypt
 
 def main():
     return "Hello from main!"
 
-def fhe():
-    return "fhe"
-    # res = await fhe_encrypt("./", "spector.csv")
-    # return res
+async def fhe():
+    # return "fhe"
+    res = await fhe_encrypt("./", "spector.csv")
+    return res
 
 def test():
     return "test"

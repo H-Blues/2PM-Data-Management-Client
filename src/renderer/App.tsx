@@ -20,6 +20,10 @@ import LocalEncryption from './components/LocalEncryption';
 import UploadEncryptedData from './components/DataUpload';
 import OneClickOperation from './components/OneClickOperation';
 
+import PPM from './components/Intro/2PM';
+import Zama from './components/Intro/zama';
+import Filecoin from './components/Intro/filecoin';
+
 import './App.css';
 
 interface SidebarItem {
@@ -132,6 +136,9 @@ function MainContent() {
           element={<UploadEncryptedData />}
         />
         <Route path="/one-click-operation" element={<OneClickOperation />} />
+        <Route path="/2pm-network" element={<PPM />} />
+        <Route path="/zama" element={<Zama />} />
+        <Route path="/filecoin" element={<Filecoin />} />
       </Routes>
     </main>
   );

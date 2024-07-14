@@ -1,5 +1,6 @@
 import React, { useState, ChangeEvent } from 'react';
 import Papa from 'papaparse';
+import Modal from './Modal';
 
 interface ElectronAPI {
   ipcRenderer: {
@@ -22,11 +23,13 @@ const LocalEncryption: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);
   const [description, setDescription] = useState<string>('');
   const [preview, setPreview] = useState<any[] | null>(null);
-  const [pythonResult, setPythonResult] = useState<string>('');
-  const [encryptionStatus, setEncryptionStatus] = useState<EncryptionStatus>({
-    isEncrypting: false,
-    encryptedFilePath: '',
-  });
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [message, setMessage] = useState(
+    'Our FHE encryption function currently does not support the M1 chip. Please use a different device.',
+  );
+  const [isLoading, setIsLoading] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
@@ -34,10 +37,6 @@ const LocalEncryption: React.FC = () => {
       setFile(selectedFile);
       setDescription('');
       setPreview(null);
-      setEncryptionStatus({
-        isEncrypting: false,
-        encryptedFilePath: '',
-      });
     }
   };
 
@@ -67,17 +66,30 @@ const LocalEncryption: React.FC = () => {
 
   const handleEncryption = async () => {
     if (file) {
-      setEncryptionStatus({ isEncrypting: true, encryptedFilePath: '' });
+      setIsLoading(true);
+      setIsModalOpen(true);
+      setMessage('Encrypting file...');
+
       try {
-        setTimeout(() => {
-          setEncryptionStatus({
-            isEncrypting: false,
-            encryptedFilePath: '/src/services/spector.py',
-          });
-        }, 1200);
+        // 模拟上传过程
+        setIsUploading(true);
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+        setIsUploading(false);
+
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+
+        setIsSuccess(false);
+        setMessage(
+          'Our FHE encryption currently does not support this chip. Please use a different device.',
+        );
       } catch (err) {
         console.error(err);
-        setEncryptionStatus({ isEncrypting: false, encryptedFilePath: '' });
+        setIsSuccess(false);
+        setMessage(
+          'An error occurred during encryption. Please try again later.',
+        );
+      } finally {
+        setIsLoading(false);
       }
     }
   };
@@ -89,7 +101,7 @@ const LocalEncryption: React.FC = () => {
         'fhe',
       );
       console.log('Python script output:', result);
-      setPythonResult(result);
+      // setPythonResult(result);
     } catch (error) {
       console.error('Error calling Python script:', error);
     }
@@ -97,6 +109,13 @@ const LocalEncryption: React.FC = () => {
 
   return (
     <div className="h-screen overflow-auto ">
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        isSuccess={isSuccess}
+        message={message}
+        isLoading={isLoading}
+      />
       <div className="max-w-full mt-14 bg-white rounded-md pb-16">
         <h1 className="text-3xl font-bold mb-6 text-left font-sans">
           🔒 Fully Homomorphic Encryption
@@ -191,22 +210,18 @@ const LocalEncryption: React.FC = () => {
 
         <button
           onClick={handleEncryption}
-          disabled={!file || encryptionStatus.isEncrypting}
+          disabled={!file || isLoading || isUploading}
           className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-md disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          {encryptionStatus.isEncrypting ? 'Encrypting...' : 'Encrypt File'}
+          {isUploading
+            ? 'Uploading...'
+            : isLoading
+            ? 'Encrypting...'
+            : 'Encrypt File'}
         </button>
-        {encryptionStatus.isEncrypting && (
+        {(isUploading || isLoading) && (
           <div className="mt-4">
             <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-gray-900"></div>
-          </div>
-        )}
-        {encryptionStatus.encryptedFilePath && (
-          <div className="mt-4">
-            <p className="text-green-600">
-              Encryption complete. File saved at:{' '}
-              {encryptionStatus.encryptedFilePath}
-            </p>
           </div>
         )}
       </div>
