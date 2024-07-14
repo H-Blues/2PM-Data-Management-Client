@@ -21,6 +21,8 @@ import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
+import dotenv from 'dotenv';
+dotenv.config();
 
 class AppUpdater {
   constructor() {
@@ -82,6 +84,8 @@ const createWindow = async () => {
     height: 728,
     icon: getAssetPath('icon.png'),
     webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false, // protect against prototype pollution
       // preload: path.join(__dirname, 'preload.ts'),
       preload: app.isPackaged
         ? path.join(__dirname, 'preload.js')
